@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <title>Masonry Layout</title>
+  <link type="text/css" rel="styleSheet"  href="masonrycss.css" />
+</head>
+<body>
+  <h3 style="color: rgb(56, 56, 56);padding: 5%;">利用column属性,关键在于column值和column-gap</h3>
+  <div id='Masonry'>
+  <div class='item'><img src="http://picsum.photos/360/460?random=1"> </div>
+
+</div>
+
+  <script>
+    //单纯生成随机图片，没有别的用处
+    let numberOfPic=15
+    let magicNumber=-1;
+    for(let i=0;i<numberOfPic;i++){
+      // template
+      let height='{{height}}';
+      let width='{{width}}'
+      let n='{{n}}'
+      let template='<img src="http://picsum.photos/{{height}}/{{width}}?random={{n}}">'
+      let random=Math.floor(Math.random()*100);
+      console.log(random);
+      template=template.replace(height,((random-Math.floor(Math.random()*10))*10));
+      template=template.replace(width,(random)*10);
+      template=template.replace(n,i);
+      
+      // newnode
+      let node=document.createElement('div');
+      node.setAttribute('class','item');
+      node.innerHTML=template;  
+      document.getElementById('Masonry').appendChild(node);
+    }
+
+  </script>
+</body>

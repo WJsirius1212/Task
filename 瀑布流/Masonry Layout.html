@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)file:///E:/wj/bingyan/task3/%E7%80%91%E5%B8%83%E6%B5%81/css/index.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>Masonry Layout</title>
+  <link type="text/css" rel="styleSheet" href="./Masonry Layout_files/masonrycss.css">
+</head>
+<body>
+  <h3 style="color: rgb(56, 56, 56);padding: 5%;">利用column属性,关键在于column值和column-gap</h3>
+  <div id="Masonry">
+  <div class="item"><img src="./Masonry Layout_files/161-360x460.jpg"> </div>
+
+<div class="item"><img src="./Masonry Layout_files/503-100x190.jpg"></div><div class="item"><img src="./Masonry Layout_files/568-480x560.jpg"></div><div class="item"><img src="./Masonry Layout_files/701-30x40.jpg"></div><div class="item"><img src="./Masonry Layout_files/980-110x130.jpg"></div><div class="item"><img src="./Masonry Layout_files/991-840x850.jpg"></div><div class="item"><img src="./Masonry Layout_files/962-430x480.jpg"></div><div class="item"><img src="./Masonry Layout_files/585-420x510.jpg"></div><div class="item"><img src="./Masonry Layout_files/954-320x350.jpg"></div><div class="item"><img src="./Masonry Layout_files/308-850x910.jpg"></div><div class="item"><img src="./Masonry Layout_files/768-70x150.jpg"></div><div class="item"><img src="./Masonry Layout_files/959-280x300.jpg"></div><div class="item"><img src="./Masonry Layout_files/441-4219x60.jpg"></div><div class="item"><img src="./Masonry Layout_files/998-110x160.jpg"></div><div class="item"><img src="./Masonry Layout_files/832-130x150.jpg"></div><div class="item"><img src="./Masonry Layout_files/16-290x310.jpg"></div></div>
+
+  <script>
+    //单纯生成随机图片，没有别的用处
+    let numberOfPic=15
+    let magicNumber=-1;
+    for(let i=0;i<numberOfPic;i++){
+      // template
+      let height='{{height}}';
+      let width='{{width}}'
+      let n='{{n}}'
+      let template='<img src="http://picsum.photos/{{height}}/{{width}}?random={{n}}">'
+      let random=Math.floor(Math.random()*100);
+      console.log(random);
+      template=template.replace(height,((random-Math.floor(Math.random()*10))*10));
+      template=template.replace(width,(random)*10);
+      template=template.replace(n,i);
+      
+      // newnode
+      let node=document.createElement('div');
+      node.setAttribute('class','item');
+      node.innerHTML=template;  
+      document.getElementById('Masonry').appendChild(node);
+    }
+
+  </script>
+</body></html>

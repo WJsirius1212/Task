@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<head></head>
+<body>
+  <div id="content" style="height:150px;line-height:150px;text-align:center; color: #fff;background-color:#ccc;font-size:80px;"></div>
+<script>
+function throttle(fn,wait,type){
+  //type0-计时器，延后执行
+  //type1-时间戳，立即执行
+  let past=0;
+  let timeOut;
+  return function(){
+    let thisContext=this;
+    let args=arguments;
+    let now= Date.now();
+    if(type===1){
+      if(now-past>wait){
+        fn.apply(thisContext,args);
+        past=now;
+      }
+    }else if(type===0){
+      if(!timeOut){
+        timeOut=setTimeout(()=>{
+          fn.apply(thisContext,args);
+          timeOut=null;
+        },wait);
+      }
+    }
+
+  }
+}
+
+    let num = 1;
+    let content = document.getElementById('content');
+
+    function count() {
+        content.innerHTML = num++;
+    };
+    content.onmousemove = throttle(count,1000,1);
+</script>
+</body>
